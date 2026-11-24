@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { getAllDecks } from "@/presentations/registry";
+import { getFeaturedDecks } from "@/presentations/registry";
 import {
   Presentation,
   Sliders,
@@ -14,10 +14,11 @@ import {
   Code,
   Calendar,
   User,
+  Award,
 } from "lucide-react";
 
 export default function PresentationHubPage() {
-  const decks = getAllDecks();
+  const decks = getFeaturedDecks();
 
   return (
     <main className="min-h-screen bg-slate-950 text-slate-100 flex flex-col justify-between">
@@ -78,7 +79,7 @@ export default function PresentationHubPage() {
             <span className="text-xs font-mono text-slate-500">Select a deck to enter the 16:9 stage</span>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className={`grid grid-cols-1 ${decks.length > 1 ? "md:grid-cols-2" : "max-w-4xl mx-auto w-full"} gap-8`}>
             {decks.map((deck) => (
               <div
                 key={deck.slug}
