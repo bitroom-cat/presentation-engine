@@ -1,11 +1,13 @@
 import { DeckDefinition } from "@/engine/types";
+import { multiAgentLlmSystemsV2Deck } from "./multi-agent-llm-systems-v2";
 import { multiAgentLlmSystemsDeck } from "./multi-agent-llm-systems";
-import { adaptiveEdgeCompressionDeck } from "./adaptive-edge-compression";
 import { adaptiveEdgeCompressionV2Deck } from "./adaptive-edge-compression-v2";
-import { systemDesignOverviewDeck } from "./system-design-overview";
+import { adaptiveEdgeCompressionDeck } from "./adaptive-edge-compression";
 import { industrialTrainingDeck } from "./industrial-training";
+import { systemDesignOverviewDeck } from "./system-design-overview";
 
 export const presentationRegistry: Record<string, DeckDefinition> = {
+  "multi-agent-llm-systems-v2": multiAgentLlmSystemsV2Deck,
   "multi-agent-llm-systems": multiAgentLlmSystemsDeck,
   "adaptive-edge-compression-v2": adaptiveEdgeCompressionV2Deck,
   "adaptive-edge-compression": adaptiveEdgeCompressionDeck,
@@ -18,8 +20,8 @@ export function getAllDecks(): DeckDefinition[] {
 }
 
 export function getFeaturedDecks(): DeckDefinition[] {
-  // Only display the featured Major Project deck on the front page as requested
-  return [multiAgentLlmSystemsDeck];
+  // Only display the featured visual-first Major Project deck on the front page as requested
+  return [multiAgentLlmSystemsV2Deck];
 }
 
 export function getDeckBySlug(slug: string): DeckDefinition | undefined {
